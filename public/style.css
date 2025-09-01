@@ -10,31 +10,36 @@
 body {
   background-color: #f0f2f5;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   padding: 40px 20px;
+}
+
+/* Container centralizado */
+.container {
+  width: 100%;
+  max-width: 400px;
 }
 
 /* Títulos */
 h1, h2 {
-  margin-bottom: 20px;
   color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Formulário */
 form {
-  background: #fff;
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 form input {
-  padding: 8px 10px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -45,8 +50,8 @@ form button {
   border-radius: 4px;
   background-color: #0077ff;
   color: white;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
   transition: background 0.3s;
 }
 
@@ -58,11 +63,10 @@ form button:hover {
 ul {
   list-style: none;
   margin-top: 20px;
-  width: 300px;
 }
 
 ul li {
-  background: #fff;
+  background-color: #fff;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 6px;
