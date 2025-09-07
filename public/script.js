@@ -1,5 +1,8 @@
 const form = document.getElementById('form');
 const lista = document.getElementById('lista');
+let editandoId = null; // guarda o id do usuário que está sendo editado
+
+window.onload = carregarUsuarios;
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -12,18 +15,26 @@ form.addEventListener('submit', async (e) => {
     matricula: document.getElementById('matricula').value
   };
 
-  const res = await fetch('/usuarios', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(usuario)
-  });
+  if (editandoId !== null) {
+    await fetch(`/usuarios/${editandoId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(usuario)
+    });
+    editandoId = null;
+    document.getElementById('btnSalvar').textContent = "Cadastrar";
+  } else {
 
-  const novo = await res.json();
-  salvarLocal(novo);
-  mostrarUsuarios();
+    await fetch('/usuarios', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(usuario)
+    });
+  }
+
+  carregarUsuarios();
   form.reset();
 });
-
 
 async function carregarUsuarios() {
   const res = await fetch('/usuarios');
@@ -32,29 +43,42 @@ async function carregarUsuarios() {
   mostrarUsuarios();
 }
 
-
 function mostrarUsuarios() {
   lista.innerHTML = '';
   const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-  usuarios.forEach(u => {
+
+  usuarios.forEach((u, index) => {
     const li = document.createElement('li');
     li.textContent = `${u.nome} - ${u.email}`;
-    const btn = document.createElement('button');
-    btn.textContent = "Excluir";
-    btn.onclick = () => deletarUsuario(u.id);
-    li.appendChild(btn);
+
+    const btnEditar = document.createElement('button');
+    btnEditar.textContent = "Editar";
+    btnEditar.className = "editar";
+    btnEditar.onclick = () => editarUsuario(u, u.id);
+
+    const btnExcluir = document.createElement('button');
+    btnExcluir.textContent = "Excluir";
+    btnExcluir.className = "excluir";
+    btnExcluir.onclick = () => deletarUsuario(u.id);
+
+    li.appendChild(btnEditar);
+    li.appendChild(btnExcluir);
     lista.appendChild(li);
   });
 }
 
+function editarUsuario(usuario, index) {
+  document.getElementById('nome').value = usuario.nome;
+  document.getElementById('cpf').value = usuario.cpf;
+  document.getElementById('telefone').value = usuario.telefone;
+  document.getElementById('email').value = usuario.email;
+  document.getElementById('matricula').value = usuario.matricula;
+
+  editandoId = index;
+  document.getElementById('btnSalvar').textContent = "Salvar Alteração";
+}
 
 async function deletarUsuario(id) {
   await fetch(`/usuarios/${id}`, { method: 'DELETE' });
   carregarUsuarios();
-}
-
-function salvarLocal(usuario) {
-  const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-  usuarios.push(usuario);
-  localStorage.setItem('usuarios', JSON.stringify(usuarios));
 }
