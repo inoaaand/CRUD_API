@@ -10,7 +10,7 @@ export const adicionarUsuario = (usuario) => {
 };
 
 export const atualizarUsuario = (id, novosDados) => {
-  const index = usuarios.findIndex(u => u.id == id);
+  const index = usuarios.findIndex(u => u.id == Number(id));
   if (index !== -1) {
     usuarios[index] = { ...usuarios[index], ...novosDados };
     return usuarios[index];
@@ -19,7 +19,7 @@ export const atualizarUsuario = (id, novosDados) => {
 };
 
 export const removerUsuario = (id) => {
-  const index = usuarios.findIndex(u => u.id == id);
+  const index = usuarios.findIndex(u => u.id == Number(id));
   if (index !== -1) {
     return usuarios.splice(index, 1)[0];
   }

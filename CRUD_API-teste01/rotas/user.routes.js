@@ -3,7 +3,6 @@ import { obterUsuarios, adicionarUsuario, atualizarUsuario, removerUsuario } fro
 
 const router = Router();
 
-
 router.post("/usuarios", (req, res) => {
   const { nome, cpf, telefone, email, matricula } = req.body;
   if (!nome || !cpf || !telefone || !email || !matricula) {
