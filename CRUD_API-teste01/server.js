@@ -9,7 +9,6 @@ app.use(logger);
 
 app.use(express.static("public")); 
 
-
 app.use("/", router);
 
 const PORT = 3000;

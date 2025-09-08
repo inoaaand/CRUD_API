@@ -1,0 +1,118 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #e6f4ea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 700px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.inputs img {
+  height: 60px;
+  margin: 0 auto 20px;
+}
+
+.inputs h2 {
+  font-size: 24px;
+  color: #000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.inputs p {
+  margin-bottom: 15px;
+}
+
+.inputs label {
+  font-size: 16px;
+  color: #000;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input,
+.inputs input {
+  width: 100%;
+  height: 35px;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#btnSalvar {
+  padding: 10px 20px;
+  background-color: #2e7d32;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnSalvar:hover {
+  background-color: #1b5e20;
+}
+
+/* Lista de usuários */
+#lista {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+#lista li {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+#lista button {
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#lista .editar {
+  background-color: #f39c12;
+}
+
+#lista .editar:hover {
+  background-color: #e67e22;
+}
+
+#lista .excluir {
+  background-color: #e74c3c;
+}
+
+#lista .excluir:hover {
+  background-color: #c0392b;
+}

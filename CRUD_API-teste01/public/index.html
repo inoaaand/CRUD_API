@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD Usuários</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="inputs">
+    <header>
+      <img src="img/ifpr.jpeg" alt="imagem instituto federal" />
+      <h2>Cadastro de Usuários</h2>
+    </header>
+    <form id="form">
+      <p>
+        <label for="nome">Nome:</label>
+        <input type="text" class="input" id="nome" placeholder="Digite seu nome" required />
+
+        <label for="cpf">CPF:</label>
+        <input type="text" class="input" id="cpf" placeholder="Digite seu CPF" required />
+      </p>
+      <p>
+        <label for="telefone">Telefone:</label>
+        <input type="text" class="input" id="telefone" placeholder="Digite seu telefone" required />
+        <label for="email">E-mail:</label>
+        <input type="email" class="input" id="email" placeholder="Digite seu e-mail" required />
+      </p>
+      <p>
+        <label for="matricula">Matrícula:</label>
+        <input type="text" class="input" id="matricula" placeholder="Digite sua matrícula" required />
+      </p>
+      <div class="botoes">
+        <button type="submit" id="btnSalvar">Cadastrar</button>
+      </div>
+    </form>
+    <h3>Usuários Cadastrados</h3>
+    <ul id="lista"></ul>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
